@@ -38,19 +38,17 @@
 .quick-channel-item {
     text-align: center;
     cursor: pointer;
-    /* 可选：添加鼠标手型，提示可交互 */
 }
 
 .quick-channel-item img {
     width: 50px;
     height: 50px;
     margin-bottom: 8px;
-    /* 新增：过渡效果 */
     transition: transform 0.3s ease-in-out;
     transform: rotate(0deg);
 }
 
-/* 新增：鼠标悬浮旋转45° */
+/* 新鼠标悬浮旋转45° */
 .quick-channel-item:hover img {
     transform: rotate(45deg);
 }
@@ -68,7 +66,6 @@
     margin: 0 auto;
     overflow: hidden;
     position: relative;
-    /* 关键：作为绝对定位元素的父容器 */
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
@@ -76,11 +73,12 @@
 /* 图片列表：总宽度=单张图片宽度×图片数量，横向排列 */
 .carousel-imgs {
     height: 100%;
+    height: 100%;
     display: flex;
     transition: transform 0.5s ease;
 }
 
-/* 单张图片：核心修复 - 确保每张图片宽度等于轮播容器宽度，强制保留原始比例 */
+/* 单张图片：确保每张图片宽度等于轮播容器宽度，强制保留原始比例 */
 .carousel-imgs img {
     width: 100vw;
     height: 100%;
@@ -98,7 +96,6 @@
     display: flex;
     gap: 10px;
     z-index: 10;
-    /* 低于标题栏和导航栏，避免遮挡 */
 }
 
 .dot {
@@ -124,14 +121,11 @@
     padding: 5px 20px;
     color: #fff;
     background: transparent;
-    /* 透明背景 */
     position: absolute;
-    /* 绝对定位，悬浮于轮播图上方 */
     top: 0;
     left: 0;
     right: 0;
     z-index: 20;
-    /* 最高层级，确保不被遮挡 */
 }
 
 /* 校徽容器样式 */
@@ -147,7 +141,7 @@
     object-fit: contain;
 }
 
-/* 右侧快捷入口样式优化：增加文字阴影，提升可读性 */
+/* 右侧快捷入口样式优化 */
 .quick-entry {
     font-size: 14px;
     display: flex;
@@ -170,21 +164,17 @@
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
 }
 
-/* 导航栏样式：透明背景 + 悬浮轮播图上方 + 合理布局 */
+/* 导航栏样式 */
 .nav-bar {
     background: transparent;
-    /* 关键：设置导航栏背景为透明 */
     padding: 10px 20px;
-    margin-right: 200px;
+    margin-right: 130px;
     text-align: right;
     position: absolute;
-    /* 绝对定位，跟随标题栏悬浮在轮播图上 */
-    top: 110px;
-    /* 关键：位于标题栏下方（标题栏高度≈100px+5px内边距），避免重叠 */
+    top: 90px;
     left: 0;
     right: 0;
     z-index: 19;
-    /* 层级略低于标题栏，高于轮播图和圆点 */
 }
 
 .nav-bar a {
@@ -195,23 +185,18 @@
     font-weight: bolder;
     transition: color 0.3s ease;
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-    /* 增加文字阴影，透明背景下清晰可见 */
 }
 
 .nav-bar a:hover {
     color: #f8f8f8;
 }
 
-/* -------------- 仅添加以下衔接样式，不修改原有代码 -------------- */
-/* 资讯板块容器：与轮播图拉开合理间距，保留原有资讯样式 */
+/* 资讯板块容器 */
 .news-wrap {
     margin: 50px auto;
-    /* 与上方轮播图间距，不影响轮播和资讯原有样式 */
     font-family: "Microsoft YaHei", sans-serif;
-    /* 仅补充字体，匹配资讯板块 */
 }
 
-/* -------------- 以下为原有资讯板块样式，完全保留不修改，优化许职要闻轮播样式 -------------- */
 .container {
     width: 1200px;
     margin: 0 auto;
@@ -230,9 +215,7 @@
 .news-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* 两列等宽布局，正好适配左轮播、右新闻 */
     grid-gap: 30px;
-    /* 两列之间的间距，避免拥挤 */
 }
 
 .news-card {
@@ -242,7 +225,6 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: box-shadow 0.3s ease;
     height: 400px;
-    /* 与小轮播图高度一致，保证布局对齐 */
 }
 
 .news-card:hover {
@@ -303,7 +285,6 @@
     display: block;
     flex: 1;
     margin-right: 20px;
-    /* 新增：限制单行最大宽度，换行更美观 */
     max-width: calc(100% - 100px);
 }
 
@@ -313,7 +294,8 @@
 }
 
 .news-link.highlight {
-    color: #d91e18;
+    font-weight: bold;
+    color: #fa0a2a;
 }
 
 .news-date {
@@ -324,7 +306,7 @@
     flex-shrink: 0;
 }
 
-/* 优化：许职要闻轮播专属样式（修复图片比例问题） */
+/* 许职要闻轮播专属样式 */
 .news-carousel {
     width: 100%;
     height: 400px;
@@ -371,7 +353,6 @@
     width: 30px;
     height: 30px;
     border-radius: 4px;
-    /* 方形圆角 */
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid #003366;
     color: #003366;
@@ -392,7 +373,7 @@
     transform: translateY(-3px);
 }
 
-/* 新增：资讯板块通用样式（通知公告/院部动态等） */
+/* 资讯板块通用样式（通知公告/院部动态等） */
 .info-section {
     margin: 50px auto;
     padding: 20px 0;
@@ -482,9 +463,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* 保持视频画面比例，填充容器，不拉伸变形 */
     object-position: center;
-    /* 画面居中显示 */
 }
 
 .video-controls {
@@ -576,8 +555,8 @@
     cursor: pointer;
 }
 
-/* -------------- 新增：轮播核心样式（修复原代码缺失问题） -------------- */
-/* 通用轮播容器样式（专题网站+能工巧匠共用） */
+/* -------------- 轮播核心样式 -------------- */
+/* 通用轮播容器样式 */
 .carousel-container {
     position: relative;
     width: 100%;
@@ -590,7 +569,6 @@
     display: flex;
     transition: transform 0.5s ease-in-out;
     gap: 20px;
-    /* 保持卡片之间的间距 */
 }
 
 /* 左右箭头样式：修改为<>，优化居中对齐 */
@@ -604,7 +582,6 @@
     background: rgba(0, 51, 102, 0.8);
     color: #fff;
     font-size: 24px;
-    /* 微调字体大小，让<>更醒目 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -614,9 +591,7 @@
     border: none;
     outline: none;
     padding: 0;
-    /* 清除默认内边距，避免箭头偏移 */
     font-family: "Microsoft YaHei", sans-serif;
-    /* 统一字体，避免箭头变形 */
 }
 
 .carousel-arrow:hover {
@@ -631,11 +606,10 @@
     right: 10px;
 }
 
-/* 专题网站轮播适配（覆盖原有冲突样式） */
+/* 专题网站轮播适配 */
 .special-grid {
     display: flex;
     gap: 20px;
-    /* 移除滚动条样式，与轮播功能兼容 */
     overflow-x: visible;
     padding-bottom: 0;
 }
@@ -647,7 +621,6 @@
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     flex-shrink: 0;
-    /* 禁止卡片收缩，保证尺寸统一 */
 }
 
 .special-card img {
@@ -656,11 +629,10 @@
     object-fit: cover;
 }
 
-/* 能工巧匠轮播适配（覆盖原有grid布局） */
+/* 能工巧匠轮播适配 */
 .artisan-grid {
     display: flex;
     gap: 20px;
-    /* 移除原有grid布局，适配轮播轨道 */
     grid-template-columns: none;
     grid-gap: 0;
     margin-top: 0;
@@ -668,13 +640,11 @@
 
 .artisan-card {
     width: 380px;
-    /* 单张卡片宽度，适配3列可视区域 */
     height: 200px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     flex-shrink: 0;
-    /* 禁止卡片收缩 */
 }
 
 .artisan-card img {
@@ -688,12 +658,10 @@
     color: #fff;
     padding: 30px 0;
     margin-top: 50px;
-    /* 背景图片样式：占满整个屏幕宽度 */
-    background-image: url("./img/fj1.jpg");
+    background-image: url("https://www.xcitc.edu.cn/img2022/bqbg.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    /* 遮罩层相关定位 */
     position: relative;
     z-index: 1;
 }
@@ -706,10 +674,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 51, 102, 0.8);
-    /* 与页脚主色调一致的半透明遮罩 */
+    background-color: rgba(0, 51, 102, 0.1);
     z-index: -1;
-    /* 遮罩层在背景图片上方、内容下方 */
 }
 
 /* 快速通道样式：内容居中但不限制整个宽度 */
@@ -761,7 +727,7 @@
 
 /* 鼠标悬浮旋转45° */
 .quick-channel-item:hover img {
-    transform: rotate(45deg);
+    transform: rotate(-20deg);
 }
 
 .quick-channel-item span {
@@ -777,7 +743,7 @@
     color: #ffcc00;
 }
 
-/* 页脚主体样式：宽度100%占满屏幕 */
+/* 页脚主体样式 */
 .footer-main {
     width: 1200px;
     max-width: 100%;
@@ -786,7 +752,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 30px 20px;
-    /* 增加内边距，优化内容布局 */
 }
 
 .footer-logo {
@@ -796,14 +761,8 @@
 }
 
 .footer-logo img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-}
-
-.footer-logo-text {
-    font-size: 20px;
-    font-weight: bold;
+    width: 100%;
+    height: 100%;
 }
 
 .footer-selects {
@@ -855,5 +814,4 @@
     padding: 15px 0;
     font-size: 14px;
     color: black;
-    /* 保留文字颜色，其余样式不变 */
 }
