@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>许昌职业技术学院官网布局</title>
+    <link rel="shortcut icon" href="https://www.xcitc.edu.cn/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="src/index.css">
+</head>
+
+<body>
+    <!-- -------------- 原有头部+轮播图代码，修复标签拼写错误 -------------- -->
+    <div class="carousel" id="myCarousel">
+        <!-- 标题栏：透明背景，悬浮在轮播图最上方 -->
+        <div class="header-bar">
+            <div class="logo-container">
+                <img src="https://www.xcitc.edu.cn/img2022/xcitc-logo.png" alt="许昌职业技术学院校徽">
+            </div>
+            <div class="quick-entry">
+                <a href="#">教工入口</a> /
+                <a href="#">学生入口</a> /
+                <a href="#">校友入口</a> /
+                <a href="#">曹魏文化</a>
+                <span>🔍</span>
+            </div>
+        </div>
+
+        <!-- 导航栏：透明背景，悬浮在标题栏下方、轮播图上方 -->
+        <div class="nav-bar">
+            <a href="#">首页</a>
+            <a href="#">新闻中心</a>
+            <a href="#">学院概况</a>
+            <a href="#">管理机构</a>
+            <a href="#">院系设置</a>
+            <a href="#">教学科研</a>
+            <a href="#">信息公开</a>
+            <a href="#">招生就业</a>
+            <a href="#">数字校园</a>
+        </div>
+
+        <!-- 图片列表：修复标签拼写错误 -->
+        <div class="carousel-imgs" id="carouselImgs">
+            <img src="./img/c29ff910ddf2ebc23e41ecbbb730068e44ebe1f1e70c4-aJqSML.png" alt="轮播图1">
+            <img src="./img/fj1.jpg" alt="轮播图2">
+            <img src="./img/fj3.jpg" alt="轮播图3">
+            <img src="./img/hongyangjiaoyujiajingshen (1).png" alt="轮播图4">
+            <img src="./img/weixintupian_20240325141209.jpg" alt="轮播图5">
+            <img src="./img/xcitc-banner-fzs.jpg" alt="轮播图6">
+        </div>
+
+        <!-- 底部圆点 -->
+        <div class="carousel-dots" id="carouselDots">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+            <div class="dot" data-index="4"></div>
+            <div class="dot" data-index="5"></div>
+        </div>
+    </div>
+
+    <!-- -------------- 资讯板块：调整结构，实现左轮播、右新闻 -------------- -->
+    <div class="news-wrap">
+        <div class="container">
+            <!-- 板块总标题 -->
+            <div class="special-title">许职要闻</div>
+            <!-- 核心调整：新闻网格容器（包含小轮播图 + 新闻列表，两列等宽） -->
+            <div class="news-grid">
+                <!-- 左侧：小轮播图 -->
+                <div class="news-carousel" id="newsCarousel">
+                    <div class="news-carousel-list" id="newsCarouselList">
+                        <div><img src="./img/131B4C40B4A452667453B1AE50F_54154CEB_DC13E.png" alt="许职要闻1"></div>
+                        <div><img src="./img/5768E00144465CD6A14087C4547_61208A75_12003.jpg" alt="许职要闻2"></div>
+                        <div><img src="./img/705365905704A9028DE543D64B0_A505FB6B_161A5.jpg" alt="许职要闻3"></div>
+                        <div><img src="./img/BD21CDA0A3B34A207798E895C61_CFA7568A_208BC.jpg" alt="许职要闻4"></div>
+                    </div>
+                    <!-- 方形数字指示器（1-4） -->
+                    <div class="news-carousel-dots">
+                        <div class="news-carousel-dot active" data-index="0">1</div>
+                        <div class="news-carousel-dot" data-index="1">2</div>
+                        <div class="news-carousel-dot" data-index="2">3</div>
+                        <div class="news-carousel-dot" data-index="3">4</div>
+                    </div>
+                </div>
+
+                <!-- 右侧：新闻列表（与小轮播图同级，放入grid容器中，自动排列到右侧） -->
+                <div class="news-list-static">
+                    <div class="news-item">
+                        <a href="#" class="news-link">【学习时间】中国共产党第二十届中央委员会第四次全体会...</a>
+                        <span class="news-date">2025-10-23</span>
+                    </div>
+                    <div class="news-item">
+                        <a href="#" class="news-link">新华网专访｜许昌职业技术学院党委书记来俊军回答了这些问题</a>
+                        <span class="news-date">2025-11-13</span>
+                    </div>
+                    <div class="news-item">
+                        <a href="#" class="news-link highlight">许昌职业技术学院二〇二六年新年贺词</a>
+                        <span class="news-date">2025-12-31</span>
+                    </div>
+                    <div class="news-item">
+                        <a href="#" class="news-link">厚德笃行育英才 同心筑梦向未来｜许昌职业技术学院2026迎...</a>
+                        <span class="news-date">2025-12-31</span>
+                    </div>
+                    <div class="news-item">
+                        <a href="#" class="news-link">河南省高职单招资格调研组莅临我校调研</a>
+                        <span class="news-date">2025-12-30</span>
+                    </div>
+                    <div class="news-item">
+                        <a href="#" class="news-link">我校在河南省铸牢中华民族共同体意识主题征文比赛中获奖</a>
+                        <span class="news-date">2025-12-29</span>
+                    </div>
+                    <div class="news-item">
+                        <a href="#" class="news-link">我校举办第三十四期党员发展对象培训班</a>
+                        <span class="news-date">2025-12-29</span>
+                    </div>
+                    <div class="news-item">
+                        <a href="#" class="news-link">我校召开固定资产清查工作会议</a>
+                        <span class="news-date">2025-12-29</span>
+                    </div>
+                    <div class="news-item">
+                        <a href="#" class="news-link">副院长刘颖民赴鄢陵县大马镇调研驻村帮扶工作</a>
+                        <span class="news-date">2025-12-27</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------- 第一组：通知公告、院部动态、教学科研板块（独立布局，不嵌套） -------------- -->
+    <div class="info-section">
+        <div class="container">
+            <div class="info-grid">
+                <!-- 通知公告 -->
+                <div class="info-card">
+                    <h3 class="info-title">通知公告</h3>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <a href="#">关于印发《许昌职业技术学院高层次人才...</a>
+                            <span class="info-date">07-19</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">理论学习通知</a>
+                            <span class="info-date">12-29</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">许昌职业技术学院关于2026年元旦放假安...</a>
+                            <span class="info-date">12-22</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">理论学习通知</a>
+                            <span class="info-date">12-09</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">许昌职业技术学院2025年第四批考核招聘...</a>
+                            <span class="info-date">11-11</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">理论学习通知</a>
+                            <span class="info-date">11-10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 院部动态 -->
+                <div class="info-card">
+                    <h3 class="info-title">院部动态</h3>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <a href="#">我校举办《河南省高校学生管理工作分时...</a>
+                            <span class="info-date">12-26</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">校企篮球联谊 共筑交流桥梁——许昌职业...</a>
+                            <span class="info-date">12-25</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">宴遇至日 文脉相传——我校冬至饮食文化...</a>
+                            <span class="info-date">12-19</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">2025艺术学院音乐专业教师技能展演活动...</a>
+                            <span class="info-date">12-18</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">三门峡职业技术学院到我校考察交流共青...</a>
+                            <span class="info-date">12-11</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">副院长马建民带队开展冬季校园消防安全检查</a>
+                            <span class="info-date">12-10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 教学科研 -->
+                <div class="info-card">
+                    <h3 class="info-title">教学科研</h3>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <a href="#">我校2025秋季学期教材展圆满举办</a>
+                            <span class="info-date">12-26</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">我校召开2026年新增/撤销专业论证会</a>
+                            <span class="info-date">11-23</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">我校组织召开2025-2026学年第一学期教材...</a>
+                            <span class="info-date">09-09</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">中国教育科学研究院聂伟博士莅临我校开...</a>
+                            <span class="info-date">06-22</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">我校成功举办“十四五”职业教育国家规...</a>
+                            <span class="info-date">06-16</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">我校召开新双高建设背景下优质新形态教...</a>
+                            <span class="info-date">06-05</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------- 第二组：媒体关注、校园新媒、许职影像板块（独立布局，与上一组并列） -------------- -->
+    <div class="info-section">
+        <div class="container">
+            <div class="info-grid">
+                <!-- 媒体关注 -->
+                <div class="info-card">
+                    <h3 class="info-title">媒体关注</h3>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <a href="#">【河南高教】108张照片，共同见证河南高...</a>
+                            <span class="info-date">01-01</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">【许昌广播电视台】学习贯彻党的二十届四中全会精神</a>
+                            <span class="info-date">12-27</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">【“我的许昌”客户端】许昌职业技术学...</a>
+                            <span class="info-date">12-26</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">【学习强国】河南许昌：学习贯彻党的二...</a>
+                            <span class="info-date">12-26</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">【大象新闻】许昌：“全民反恐·共创平安...</a>
+                            <span class="info-date">12-26</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">【许昌网】学习贯彻党的二十届四中全会...</a>
+                            <span class="info-date">12-25</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">【“我的许昌”客户端】学习贯彻党的二...</a>
+                            <span class="info-date">12-24</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 校园新媒 -->
+                <div class="info-card">
+                    <h3 class="info-title">校园新媒</h3>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <a href="#">喜报！我校荣获第九届黄炎培职业教育奖...</a>
+                            <span class="info-date">12-16</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">2025年河南省高等职业教育技能大赛道路...</a>
+                            <span class="info-date">12-16</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">喜报！我校在2025一带一路暨金砖国家技...</a>
+                            <span class="info-date">12-05</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">喜报！国奖+1！</a>
+                            <span class="info-date">12-03</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">新突破！金奖！</a>
+                            <span class="info-date">12-02</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">喜讯！一等奖+5，二等奖+6，三等奖+8！</a>
+                            <span class="info-date">11-27</span>
+                        </div>
+                        <div class="info-item">
+                            <a href="#">(权威访谈) 深学笃行全会精神 办好现代...</a>
+                            <span class="info-date">11-14</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 许职影像（视频板块）：视频尺寸已适配 -->
+                <div class="info-card">
+                    <h3 class="info-title">许职影像</h3>
+                    <div class="video-card">
+                        <video loop controls poster="./img/c29ff910ddf2ebc23e41ecbbb730068e44ebe1f1e70c4-aJqSML.png">
+                            <source
+                                src="https://www.xcitc.edu.cn/__local/9/28/45/85E3B36E09DA899AC6CA9913157_7F4D8DF8_2B812A7B.mp4?e=.mp4"
+                                type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------- 修复：双高建设专题网站+能工巧匠板块（移出嵌套，独立布局） -------------- -->
+    <div class="special-section">
+        <div class="container">
+            <!-- 双高建设专题banner -->
+            <div class="special-banner">
+                <img src="./img/min-banner-sg-blue.jpg" alt="双高建设专题网站">
+            </div>
+
+            <!-- 专题网站板块（带箭头手动轮播，无自动播放） -->
+            <div class="special-title">专题网站</div>
+            <div class="carousel-container special-carousel" id="specialCarousel">
+                <!-- 左箭头 -->
+                <button class="carousel-arrow arrow-left" id="specialLeftBtn">&lt;</button>
+                <!-- 轮播轨道 -->
+                <div class="carousel-track" id="specialTrack">
+                    <div class="special-card">
+                        <img src="./img/xcitc-zt.jpg" alt="学习贯彻习近平新时代中国特色社会主义思想主题教育">
+                    </div>
+                    <div class="special-card">
+                        <img src="./img/xcitc-zttp.jpg" alt="招标与采购信息">
+                    </div>
+                    <div class="special-card">
+                        <img src="./img/zt02.png" alt="学习强国">
+                    </div>
+                    <div class="special-card">
+                        <img src="./img/esd2.jpg" alt="学习宣传贯彻党的二十大精神">
+                    </div>
+                    <div class="special-card">
+                        <img src="./img/zt01.png" alt="党史学习教育">
+                    </div>
+                    <!-- 移除空白图片，避免布局错乱 -->
+                    <div class="special-card">
+                        <img src="./img/xcitc-zt.jpg" alt="学习宣传贯彻党的二十大精神">
+                    </div>
+                </div>
+                <!-- 右箭头 -->
+                <button class="carousel-arrow arrow-right" id="specialRightBtn">&gt;</button>
+            </div>
+
+            <!-- 能工巧匠板块（带箭头手动轮播，无自动播放） -->
+            <div class="special-title">能工巧匠</div>
+            <div class="carousel-container artisan-carousel" id="artisanCarousel">
+                <!-- 左箭头 -->
+                <button class="carousel-arrow arrow-left" id="artisanLeftBtn">&lt;</button>
+                <!-- 轮播轨道 -->
+                <div class="carousel-track" id="artisanTrack">
+                    <div class="artisan-card">
+                        <img src="./img/13D2F0985A3CA60A0A2842D28C3_052A2D58_1B211.jpg" alt="技能大赛凯旋">
+                    </div>
+                    <div class="artisan-card">
+                        <img src="./img/25D34B3A9EAF7838784B592E849_EFB8459F_177E9.jpg" alt="健康养老赛项夺冠">
+                    </div>
+                    <div class="artisan-card">
+                        <img src="./img/131B4C40B4A452667453B1AE50F_54154CEB_DC13E.png" alt="物流赛项金奖">
+                    </div>
+                    <div class="artisan-card">
+                        <img src="./img/5768E00144465CD6A14087C4547_61208A75_12003.jpg" alt="技能大赛凯旋">
+                    </div>
+                    <div class="artisan-card">
+                        <img src="./img/344348AC2E61DF06B7750F6195C_40BE3022_11B56.png" alt="健康养老赛项夺冠">
+                    </div>
+                    <div class="artisan-card">
+                        <img src="./img/705365905704A9028DE543D64B0_A505FB6B_161A5.jpg" alt="物流赛项金奖">
+                    </div>
+                    <div class="artisan-card">
+                        <img src="./img/A5E539ADEBB62187002F3B5DA23_B2E203D3_1947F.jpg" alt="技能大赛凯旋">
+                    </div>
+                    <div class="artisan-card">
+                        <img src="./img/BD21CDA0A3B34A207798E895C61_CFA7568A_208BC.jpg" alt="健康养老赛项夺冠">
+                    </div>
+                    <div class="artisan-card">
+                        <img src="./img/C0CD2A46B15CEC4B1312115DDE2_5EA6FF77_BF796.jpg" alt="物流赛项金奖">
+                    </div>
+                </div>
+                <!-- 右箭头 -->
+                <button class="carousel-arrow arrow-right" id="artisanRightBtn">&gt;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------- 新增：底部快速通道+页脚区域（对应图片内容） -------------- -->
+    <div class="quick-channel">
+        <div class="special-title">快速通道</div>
+        <div class="quick-channel-list">
+            <div class="quick-channel-item">
+                <img src="./img/ico-xl.png" alt="校历">
+                <span>校历</span>
+            </div>
+            <div class="quick-channel-item">
+                <img src="./img/kcsz.png" alt="课程思政">
+                <span>课程思政</span>
+            </div>
+            <div class="quick-channel-item">
+                <img src="./img/ditu.png" alt="校园3D地图">
+                <span>校园3D地图</span>
+            </div>
+            <div class="quick-channel-item">
+                <img src="./img/04zsjy.png" alt="招生就业">
+                <span>招生就业</span>
+            </div>
+            <div class="quick-channel-item">
+                <img src="./img/9jw.png" alt="教务管理">
+                <span>教务管理</span>
+            </div>
+            <div class="quick-channel-item">
+                <img src="./img/11lqcx.png" alt="录取查询">
+                <span>录取查询</span>
+            </div>
+            <div class="quick-channel-item">
+                <img src="./img/xtjt.png" alt="杏坛讲堂">
+                <span>杏坛讲堂</span>
+            </div>
+            <div class="quick-channel-item">
+                <img src="./img/12yywz.png" alt="语言文字工作网">
+                <span>语言文字工作网</span>
+            </div>
+            <div class="quick-channel-item">
+                <img src="./img/14cxdz.png" alt="超星电子图书">
+                <span>超星电子图书</span>
+            </div>
+            <div class="quick-channel-item">
+                <img src="./img/16wfsj.png" alt="万方数据">
+                <span>万方数据</span>
+            </div>
+            <div class="quick-channel-item">
+                <img src="./img/zlbg.png" alt="质量年度报告">
+                <span>质量年度报告</span>
+            </div>
+            <div class="quick-channel-item">
+                <img src="./img/ico-zjpt.png" alt="国家智慧教育平台">
+                <span>国家智慧教育平台</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-section">
+        <!-- 快速通道 -->
+
+
+        <!-- 页脚主体 -->
+        <div class="footer-main">
+            <div class="footer-logo">
+                <img src="./img/b-logo.png" alt="校徽">
+                <div class="footer-logo-text">许昌职业技术学院</div>
+            </div>
+            <div class="footer-selects">
+                <select name="management" id="management">
+                    <option value="">-管理机构-</option>
+                </select>
+                <select name="department" id="department">
+                    <option value="">-院系设置-</option>
+                </select>
+                <select name="link" id="link">
+                    <option value="">-友情链接-</option>
+                </select>
+            </div>
+            <!-- 页脚二维码部分 -->
+            <div class="footer-qrcode">
+                <div class="footer-qrcode-item">
+                    <img src="./img/xc-wx.jpg" alt="官方微信">
+                    <span>官方微信</span>
+                </div>
+                <div class="footer-qrcode-item">
+                    <img src="./img/weibo.jpg" alt="官方微博">
+                    <span>官方微博</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 版权信息 -->
+    <div class="copyright">
+        版权所有 © 2026 许昌职业技术学院 | 地址：河南许昌市新兴路4336号 | 邮编：461000 | 办公电话：0374-2276999<br>
+        招生电话：0374-2276888 | 豫ICP备16037918号 | 豫公网安备 41100202000431号
+    </div>
+
+    <script src="./src/main.js"></script>
+</body>
+
+</html>

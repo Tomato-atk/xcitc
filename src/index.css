@@ -1,0 +1,859 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+/* 快速通道样式 */
+.quick-channel {
+    width: 1200px;
+    margin: 0 auto 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.quick-channel-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quick-channel-title a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.quick-channel-list {
+    display: flex;
+    gap: 40px;
+    justify-content: flex-start;
+}
+
+.quick-channel-item {
+    text-align: center;
+    cursor: pointer;
+    /* 可选：添加鼠标手型，提示可交互 */
+}
+
+.quick-channel-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 8px;
+    /* 新增：过渡效果 */
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0deg);
+}
+
+/* 新增：鼠标悬浮旋转45° */
+.quick-channel-item:hover img {
+    transform: rotate(45deg);
+}
+
+.quick-channel-item span {
+    font-size: 14px;
+    display: block;
+    color: blue;
+}
+
+/* 轮播容器：固定高度，宽度100%自适应，隐藏溢出（作为标题栏/导航栏的定位父级） */
+.carousel {
+    width: 100%;
+    height: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    /* 关键：作为绝对定位元素的父容器 */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 图片列表：总宽度=单张图片宽度×图片数量，横向排列 */
+.carousel-imgs {
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+/* 单张图片：核心修复 - 确保每张图片宽度等于轮播容器宽度，强制保留原始比例 */
+.carousel-imgs img {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    flex-shrink: 0;
+}
+
+/* 底部圆点指示器 */
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+    /* 低于标题栏和导航栏，避免遮挡 */
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.dot.active {
+    background: #fff;
+    transform: scale(1.2);
+}
+
+/* 标题栏样式：透明背景 + 层级置顶 */
+.header-bar {
+    margin-left: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    color: #fff;
+    background: transparent;
+    /* 透明背景 */
+    position: absolute;
+    /* 绝对定位，悬浮于轮播图上方 */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    /* 最高层级，确保不被遮挡 */
+}
+
+/* 校徽容器样式 */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container img {
+    width: 300px;
+    height: 100px;
+    object-fit: contain;
+}
+
+/* 右侧快捷入口样式优化：增加文字阴影，提升可读性 */
+.quick-entry {
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.quick-entry a {
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+    transition: color 0.3s ease;
+}
+
+.quick-entry a:hover {
+    color: #f0f0f0;
+}
+
+.quick-entry span {
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+
+/* 导航栏样式：透明背景 + 悬浮轮播图上方 + 合理布局 */
+.nav-bar {
+    background: transparent;
+    /* 关键：设置导航栏背景为透明 */
+    padding: 10px 20px;
+    margin-right: 200px;
+    text-align: right;
+    position: absolute;
+    /* 绝对定位，跟随标题栏悬浮在轮播图上 */
+    top: 110px;
+    /* 关键：位于标题栏下方（标题栏高度≈100px+5px内边距），避免重叠 */
+    left: 0;
+    right: 0;
+    z-index: 19;
+    /* 层级略低于标题栏，高于轮播图和圆点 */
+}
+
+.nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 25px;
+    font-weight: bolder;
+    transition: color 0.3s ease;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+    /* 增加文字阴影，透明背景下清晰可见 */
+}
+
+.nav-bar a:hover {
+    color: #f8f8f8;
+}
+
+/* -------------- 仅添加以下衔接样式，不修改原有代码 -------------- */
+/* 资讯板块容器：与轮播图拉开合理间距，保留原有资讯样式 */
+.news-wrap {
+    margin: 50px auto;
+    /* 与上方轮播图间距，不影响轮播和资讯原有样式 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 仅补充字体，匹配资讯板块 */
+}
+
+/* -------------- 以下为原有资讯板块样式，完全保留不修改，优化许职要闻轮播样式 -------------- */
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.news-main-title {
+    font-size: 24px;
+    color: #003366;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #d9b38c;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 两列等宽布局，正好适配左轮播、右新闻 */
+    grid-gap: 30px;
+    /* 两列之间的间距，避免拥挤 */
+}
+
+.news-card {
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+    height: 400px;
+    /* 与小轮播图高度一致，保证布局对齐 */
+}
+
+.news-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.news-card-title {
+    background-color: #003366;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.news-more {
+    font-size: 14px;
+    color: #d9b38c;
+    text-decoration: none;
+}
+
+.news-more:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* 原有静态列表样式（优化：移除滚动条，适配内容高度，与轮播图对齐） */
+.news-list-static {
+    padding: 20px;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    height: 400px;
+    white-space: normal;
+}
+
+.news-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #e6e6e6;
+    justify-content: space-between;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+.news-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 15px;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    flex: 1;
+    margin-right: 20px;
+    /* 新增：限制单行最大宽度，换行更美观 */
+    max-width: calc(100% - 100px);
+}
+
+.news-link:hover {
+    color: #d9b38c;
+    text-decoration: underline;
+}
+
+.news-link.highlight {
+    color: #d91e18;
+}
+
+.news-date {
+    width: 80px;
+    color: #999;
+    font-size: 14px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* 优化：许职要闻轮播专属样式（修复图片比例问题） */
+.news-carousel {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.news-carousel-list {
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: fit-content;
+}
+
+.news-carousel-list div {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+/* 轮播图片：绑定容器高度，强制保持比例 */
+.news-carousel-list img {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+/* 方形数字指示器样式 */
+.news-carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+}
+
+.news-carousel-dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    /* 方形圆角 */
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #003366;
+    color: #003366;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* 激活状态的方形指示器 */
+.news-carousel-dot.active {
+    background: #003366;
+    color: #fff;
+    border-color: #003366;
+    transform: translateY(-3px);
+}
+
+/* 新增：资讯板块通用样式（通知公告/院部动态等） */
+.info-section {
+    margin: 50px auto;
+    padding: 20px 0;
+    font-family: "Microsoft YaHei", sans-serif;
+    border-top: 1px solid #e6e6e6;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+}
+
+.info-card {
+    width: 100%;
+}
+
+.info-title {
+    font-size: 18px;
+    color: #003366;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #003366;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-title::after {
+    content: "更多>";
+    font-size: 14px;
+    color: #666;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.info-list {
+    padding: 10px 0;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px dashed #e6e6e6;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item a {
+    color: #333;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    margin-right: 15px;
+}
+
+.info-item a:hover {
+    color: #d9b38c;
+    text-decoration: underline;
+}
+
+.info-date {
+    color: #999;
+    font-size: 12px;
+}
+
+/* 新增：视频板块样式（含video标签适配，修复尺寸问题） */
+.video-card {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* 关键：为video标签添加适配样式，修复尺寸问题 */
+.video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 保持视频画面比例，填充容器，不拉伸变形 */
+    object-position: center;
+    /* 画面居中显示 */
+}
+
+.video-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.play-btn {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.video-time {
+    font-size: 12px;
+}
+
+.video-progress {
+    flex: 1;
+    height: 4px;
+    background: #555;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 10%;
+    height: 100%;
+    background: #fff;
+}
+
+.video-volume,
+.video-fullscreen {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* 新增：双高建设专题+能工巧匠板块样式 */
+.special-section {
+    margin: 50px auto;
+    padding: 20px 0;
+    font-family: "Microsoft YaHei", sans-serif;
+    border-top: 1px solid #e6e6e6;
+}
+
+.special-banner {
+    width: 100%;
+    height: 125px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.special-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.special-title {
+    font-size: 18px;
+    color: #003366;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #003366;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.special-title::after {
+    content: "更多>";
+    font-size: 14px;
+    color: #666;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* -------------- 新增：轮播核心样式（修复原代码缺失问题） -------------- */
+/* 通用轮播容器样式（专题网站+能工巧匠共用） */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 15px 0 30px;
+}
+
+/* 轮播内容列表（横向排列） */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 20px;
+    /* 保持卡片之间的间距 */
+}
+
+/* 左右箭头样式：修改为<>，优化居中对齐 */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 51, 102, 0.8);
+    color: #fff;
+    font-size: 24px;
+    /* 微调字体大小，让<>更醒目 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s ease;
+    border: none;
+    outline: none;
+    padding: 0;
+    /* 清除默认内边距，避免箭头偏移 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 统一字体，避免箭头变形 */
+}
+
+.carousel-arrow:hover {
+    background: rgba(0, 51, 102, 1);
+}
+
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-right {
+    right: 10px;
+}
+
+/* 专题网站轮播适配（覆盖原有冲突样式） */
+.special-grid {
+    display: flex;
+    gap: 20px;
+    /* 移除滚动条样式，与轮播功能兼容 */
+    overflow-x: visible;
+    padding-bottom: 0;
+}
+
+.special-card {
+    min-width: 280px;
+    height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    /* 禁止卡片收缩，保证尺寸统一 */
+}
+
+.special-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 能工巧匠轮播适配（覆盖原有grid布局） */
+.artisan-grid {
+    display: flex;
+    gap: 20px;
+    /* 移除原有grid布局，适配轮播轨道 */
+    grid-template-columns: none;
+    grid-gap: 0;
+    margin-top: 0;
+}
+
+.artisan-card {
+    width: 380px;
+    /* 单张卡片宽度，适配3列可视区域 */
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    /* 禁止卡片收缩 */
+}
+
+.artisan-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 底部快速通道+页脚区域 */
+.footer-section {
+    color: #fff;
+    padding: 30px 0;
+    margin-top: 50px;
+    /* 背景图片样式：占满整个屏幕宽度 */
+    background-image: url("./img/fj1.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    /* 遮罩层相关定位 */
+    position: relative;
+    z-index: 1;
+}
+
+/* 半透明遮罩层，提升内容可读性 */
+.footer-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 51, 102, 0.8);
+    /* 与页脚主色调一致的半透明遮罩 */
+    z-index: -1;
+    /* 遮罩层在背景图片上方、内容下方 */
+}
+
+/* 快速通道样式：内容居中但不限制整个宽度 */
+.quick-channel {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto 20px;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.quick-channel-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quick-channel-title a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.quick-channel-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.quick-channel-item {
+    text-align: center;
+    cursor: pointer;
+    flex: 0 0 calc(16.666% - 25px);
+    max-width: calc(16.666% - 25px);
+}
+
+.quick-channel-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 8px;
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0deg);
+}
+
+/* 鼠标悬浮旋转45° */
+.quick-channel-item:hover img {
+    transform: rotate(45deg);
+}
+
+.quick-channel-item span {
+    font-size: 14px;
+    display: block;
+    color: #fff;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+    transition: color 0.3s ease;
+}
+
+/* 鼠标悬浮文字颜色变化 */
+.quick-channel-item:hover span {
+    color: #ffcc00;
+}
+
+/* 页脚主体样式：宽度100%占满屏幕 */
+.footer-main {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+    /* 增加内边距，优化内容布局 */
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.footer-logo-text {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.footer-selects {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-selects select {
+    padding: 8px 12px;
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    border-radius: 4px;
+    width: 200px;
+}
+
+/* 页脚二维码样式优化 */
+.footer-qrcode {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.footer-qrcode-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-qrcode-item img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.footer-qrcode-item span {
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+}
+
+/* 版权信息样式 */
+.copyright {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    color: black;
+    /* 保留文字颜色，其余样式不变 */
+}
